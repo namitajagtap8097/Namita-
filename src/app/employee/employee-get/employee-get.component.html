@@ -1,0 +1,17 @@
+
+<div class="container">
+    <p>All Employees</p>
+    <p><a routerLink="/emp/create">Add New Employees</a></p>
+    <div class="row" *ngFor="let employee of employees" (click)="onSelection(employee)">
+        <div class="col-md-2">{{employee.empId}}</div>
+        <div class="col-md-2">{{employee.empName}}</div>
+        <div class="col-md-2">{{employee.designation}}</div>
+        <a routerLink="/emp/delete/{{employee.empId}}">Delete</a>
+        <div class="col-md-3">click</div> 
+    </div>
+</div>
+
+<div *ngIf="selectedEmp" class="selectedEmp">
+    <app-employee-edit [employee]="selectedEmp"></app-employee-edit>
+</div>
+

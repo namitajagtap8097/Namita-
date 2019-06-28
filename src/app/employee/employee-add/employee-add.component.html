@@ -1,0 +1,53 @@
+<div class="container">
+    <form [formGroup]="angForm" novalidate>
+        <div class="form-group">
+        <label for="empId" class="col-md-4">EmployeeID</label>
+        <input type="text" class="form-control" formControlName="empId" #empId/>
+        </div>
+        
+<!-- we want to bind error with above input element so #empId -->
+        <div class="alert alert-danger" *ngIf="angForm.controls['empId'].invalid &&
+        (angForm.controls['empId'].dirty ||angForm.controls['empId'].touched)">
+<!-- custom error message -->
+        <div *ngIf="angForm.controls['empId'].errors.required">
+            Employee Id must be entered
+        </div>
+        </div>
+
+        
+        <div class="form-group">
+        <label for="empName" class="col-md-4">Employee Name</label>
+        <input type="text" class="form-control" formControlName="empName" #empName/>
+        </div>
+<!-- we want to bind error with above input element so #empName-->
+<div class="alert alert-danger"   *ngIf="angForm.controls['empName'].invalid &&
+(angForm.controls['empName'].dirty ||angForm.controls['empName'].touched)">
+            <div *ngIf="angForm.controls['empName'].errors.required">
+                    Employee Name must be entered
+                </div>
+                </div>
+
+        <div class="form-group">
+        <label for="designation" class="col-md-4">designation</label>
+        <input type="text" class="form-control" formControlName="designation" #designation/>
+        </div>
+<!-- we want to bind error with above input element so #designation -->
+
+<div class="alert alert-danger"  *ngIf="angForm.controls['designation'].invalid &&
+(angForm.controls['designation'].dirty ||angForm.controls['designation'].touched)">
+            <div *ngIf="angForm.controls['designation'].errors.required">
+                    designation must be entered
+                </div>
+</div>
+
+
+        <div class="form-group">
+            <button (click)="addEmployee(empId.value,empName.value,designation.value)"
+                [disabled]="angForm.invalid || angForm.pristine"
+                class="btn-btn-primary">
+                Add Employee
+            </button>
+
+        </div>
+</form>
+</div> 
